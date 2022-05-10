@@ -1,5 +1,5 @@
 //Functions and Pointers
-
+//hi
 #include <stdio.h>
 
 float min(float a[]){
