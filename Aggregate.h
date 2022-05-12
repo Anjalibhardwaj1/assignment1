@@ -2,43 +2,15 @@
 
 #include <stdio.h>
 
-float min(float a[]){
-    float min = a[0];
-    for(int i = 0; i < sizeof(a); i++){
-        if (a[i] < min){
-            min = a[i];
-        }
-    }
-    return min;
-}
+float min(float *a, int size);
 
-float max(float a[]){
-    float max = a[0];
-    for(int i = 0; i < sizeof(a); i++){
-        if (a[i] > max){
-            max = a[i];
-        }
-    }
-    return max;
-}
+float max(float *a, int size);
 
-float sum(float a[]){
-    float sum;
-    for(int i = 0; i < sizeof(a); i++){
-        sum = sum + a[i];
-    }
-    return sum;
-}
+float sum(float *a, int size);
 
-float avg(float a[], float sum){
-    float avg = sum/sizeof(a);
-    return avg;
-}
+float avg(float *a, int size);
 
-float pseudo_avg(float a[], float min, float max){
-    float value = (min+max)/2;
-    return value;
-}
+float pseudo_avg(float *a, int size);
 
 
 //q4
