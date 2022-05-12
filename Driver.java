@@ -14,7 +14,7 @@ Solution: Use the following solution:
 Shape[] shapes = ...
 Printable.print(java.util.Arrays.copyOf(shapes, shapes.length, Printable[].cl*/
 
-public class Driver {
+public class main {
 
 	public static void main(String[] args) throws IOException {
 		
@@ -34,7 +34,6 @@ public class Driver {
 				
 				//parse and store the shapes in an array of Shapes
 				if (data1[0].equals("Rectangle")) {
-					//System.out.println(data1[0]);
 					shape_list.add(Rectangle.parse(data));
 				} else {
 					shape_list.add(Circle.parse(data));
@@ -42,28 +41,18 @@ public class Driver {
 			}
 			//sorting by name
 			Collections.sort(shape_list, new Comparator<Shape>() {
-				//??do we add this///What is an anonymous class? 
-//				class CompareShapes implements Comparator<Shape>{
 					@Override
 					public int compare(Shape s1, Shape s2) {
 						return s1.getName().compareTo(s2.getName());
 					}
-//				}
 			});
 			
 			//printing elements by name sort
-			//array list converted to array
 			System.out.println("based on name sorting.....");
-			
-			
-			
-			//**use the vararg for the argument type and use java "foreach" to loop through the elements 
-//			Printable.print(java.util.Arrays.copyOf(shape_list.toArray(), shape_list.size(), Printable[].class));
-			Printable.print(java.util.Arrays.copyOf(shape_list.toArray(), shape_list.size(), Printable[].class));
 
+			Printable.print(java.util.Arrays.copyOf(shape_list.toArray(), shape_list.size(), Printable[].class));
 			
 			//sorting by area
-			//do we also have to compare the names? 
 			Collections.sort(shape_list, new Comparator<Shape>() {
 					@Override
 					public int compare(Shape s1, Shape s2) {
@@ -75,7 +64,6 @@ public class Driver {
 			System.out.println("based on area sorting.....");
 			
 			
-			//**use the vararg for the argument type and use java "foreach" to loop through the elements 
 			Printable.print(java.util.Arrays.copyOf(shape_list.toArray(), shape_list.size(), Printable[].class));
 			
 			sc.close();
@@ -88,4 +76,3 @@ public class Driver {
 	}
 	
 }
-
