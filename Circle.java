@@ -1,9 +1,8 @@
-
 public class Circle extends PrintableObject implements Shape {
 
 	double radius;
 	
-	//default constructor
+	//default constructor 
 	public Circle() {
 		this.radius = 1;
 	}
