@@ -49,7 +49,7 @@ list cdr(element e) {
 
 list cddr(element e) {
 	list temp = cdr(e);
-	//return cdr(temp->el didn't work because temp->el is element of type atom and cdr requires the type to be LIST or else it returns NULL and therefore prints NIL
+	//return cdr(temp->el) didn't work because temp->el is element of type atom and cdr requires the type to be LIST or else it returns NULL and therefore prints NIL
 	return cdr(lasel(temp)); //creates a temp variable of type list to use the cdr function to get the tail of e,
 	//returns the tail of cdr(e) which is the tail of the tail of e
 }
@@ -106,8 +106,7 @@ void print(element e) {
 		printf(")");
 	}
 }
-//(a (b c) d)
-//( a ( b  c )
+
 
 int main() {
 	element a = aasel('a'); //creates element a
@@ -127,7 +126,7 @@ int main() {
 
 	list listC = malloc(sizeof(list)); //creates a list of single element c
 	listC->el = c;
-	listC->next = NULL;
+	listC->next = NULL; 
 
 	list listD = malloc(sizeof(list)); //creates a list of single element d
 	listD->el = d;
@@ -141,32 +140,19 @@ int main() {
 	listF->el = f; 
 	listF->next = NULL;
 
-	//list listG = malloc(sizeof(list));
-	//listG->el = a;
-	//listG->next = listE;
-
 	//using cons to create a bunch of lists to test functions
 	list listOne = cons(a, listB); //(a b)
 	list listTwo = cons(b, listC); // (b c)
 	list listThree = cons(e, listF); // (e f)
 	list listFour = cons(c, listThree); // (c e f)
 	list listFive = cons(a, listFour); // ( a c e f)
+	list listSix = cons(f, listE);
 
-
-
-	print(lasel(listOne));
+	print(lasel(listOne)); //( a  b )
 	printf("\n");
-	print(lasel(append(listOne, listTwo)));
+	print(lasel(listFour)); //( c  e  f )
 	printf("\n");
-	print(lasel(listFour));
-	printf("\n");
-	print(lasel(listThree));
-	printf("\n");
-	print(lasel(listFour));
-	printf("\n");
-	print(lasel(listFive));
-	printf("\n");
-	print(lasel(append(listTwo, listFour))); //( b c c e f)
+	print(lasel(listThree));//( e  f )
 	printf("\n");
 	print(car(lasel(listFour))); // c
 	printf("\n");
@@ -175,6 +161,53 @@ int main() {
 	print(lasel(cdr(lasel(listFour)))); // ( e f )
 	printf("\n");
 	print(lasel(cddr(lasel(listFive)))); // ( e f )
+	printf("\n");
+	print(lasel(append(listSix, listF))); // ( f  e  f)
+	printf("\n");
+	print(lasel(listF)); // ( f )
+	printf("\n");
+	print(lasel(listE)); // ( e  f ), because we have appended listSix, which uses list E, with list F. So since
+	//the tail of listSix is listE, listE also gets appended with listF so listE is now ( e  f )
+	printf("\n");
+	printf("\n");
+	
+	//Code for Question 6
+	list listBC = cons(b, listC); //(b c)
+	list listDE = cons(d, listE); //(d e)
+
+	list tailBCDE = malloc(sizeof(list));
+	//((b c) d e), need to do it with pointers so the head is an element of type list (b c)
+	tailBCDE->el = lasel(listBC); 
+	tailBCDE->next = listDE;
+
+	list listSeven = malloc(sizeof(list));
+	listSeven = cons(a, tailBCDE);
+	
+	//Code for Question 7
+	printf("Question 7");
+	printf("\n");
+	print(lasel(listSeven));
+	printf("\n");
+	print(car(lasel(listSeven)));
+	printf("\n");
+	print(lasel(cdr(lasel(listSeven))));
+	printf("\n");
+	print(car(car(lasel(listSeven))));
+
+	//error while runnin with free memory allocation?
+	/*lfreer(listA);
+	lfreer(listB);
+	lfreer(listC);
+	lfreer(listD);
+	lfreer(listE);
+	lfreer(listF);
+	lfreer(listOne);
+	lfreer(listTwo);
+	lfreer(listThree);
+	lfreer(listFour);
+	lfreer(listFive);
+	lfreer(listSix);*/
+	lfreer(listSeven);
 	
 	return 0;
 }
