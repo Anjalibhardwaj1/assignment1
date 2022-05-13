@@ -1,0 +1,5 @@
+Despite the fact that all shapes are either Rectangle or Circle, you cannot pass
+an a Shape[] array as Printable[] to the print method. Why?
+
+The Shape interface extends NameObject so the collection Shape[] is not printable. But the elements of the collection are printable. 
+The PrintableObject class extends the Printable interface which both the Rectangle and the Circle inherit from. 

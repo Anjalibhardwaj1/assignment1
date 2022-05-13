@@ -7,12 +7,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-/*
- * Question: Despite the fact that all shapes are either Rectangle or Circle, you cannot pass
-an a Shape[] array as Printable[] to the print method. Why?
-Solution: Use the following solution:
-Shape[] shapes = ...
-Printable.print(java.util.Arrays.copyOf(shapes, shapes.length, Printable[].cl*/
 
 public class main {
 
