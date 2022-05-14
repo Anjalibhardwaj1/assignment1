@@ -27,10 +27,12 @@ public class main {
 				String[] data1 = data.split(",");
 				
 				//parse and store the shapes in an array of Shapes
-				if (data1[0].equals("Rectangle")) {
+				if (data1[0].toLowerCase().equals("rectangle") && (data1.length == 3)) {
 					shape_list.add(Rectangle.parse(data));
-				} else {
+				} else if (data1[0].toLowerCase().equals("circle") && (data1.length == 2)) {
 					shape_list.add(Circle.parse(data));
+				} else {
+					System.out.println("Incorrect data. Shape " + data1[0] + " cannot be parsed");
 				}
 			}
 			//sorting by name
